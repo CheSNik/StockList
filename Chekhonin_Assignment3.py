@@ -1,16 +1,10 @@
-#!/usr/bin/env python3
-"""Load datafrom files and manipulates it
-Usage:
-   python3 calculator.py <option>
-"""
-
 import sys, csv, requests
 
 
 companiesList = []
 
 """Executes function according to choosen option.
-      Args:
+      Args:11
           action: The option number.
       Returns:
           Output from choosen function.
@@ -31,36 +25,19 @@ def main():
             
 """Load data from 3 existing files, merge and sort by symbol"""
 def exportFiles():
-    with open('NASDAQ.csv', mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-        line_count = 0
     
-        for row in csv_reader:
-            if line_count == 0:
-                print(f'Column names are {", ".join(row)}')
-        companiesList.append(row)
-        line_count += 1
+    files = ['NASDAQ.csv','NYSE.csv' ,'AMEX.csv']
+    
+    for file in files:
+        with open(file, mode='r') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            line_count = 0
+            for row in csv_reader:
+                if line_count == 0:
+                    print(f'Column names are {", ".join(row)}')
+                companiesList.append(row)
+                line_count += 1
           
-    with open('NYSE.csv', mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-        line_count = 0
-        
-        for row in csv_reader:
-            if line_count == 0:
-                print(f'Column names are {", ".join(row)}')
-            companiesList.append(row)
-            line_count += 1
-    
-    with open('AMEX.csv', mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-        line_count = 0
-        
-        for row in csv_reader:
-            if line_count == 0:
-                print(f'Column names are {", ".join(row)}')
-            companiesList.append(row)
-            line_count += 1
-
     companiesList.sort(key = lambda i: i['Symbol'])
     print(f'\t Total number of companies is {len(companiesList)}')
     keys= companiesList[0].keys()    
