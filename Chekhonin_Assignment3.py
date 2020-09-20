@@ -42,7 +42,7 @@ def exportFiles():
     print(f'\t Total number of companies is {len(companiesList)}')
     keys= companiesList[0].keys()    
 
-    with open('mergedList.csv', 'w', newline='')  as output_file:
+    with open('Chekhonin_Assignment3_out.csv', 'w', newline='')  as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(companiesList)
