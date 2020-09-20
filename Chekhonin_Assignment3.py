@@ -1,4 +1,4 @@
-import sys, csv, requests
+import sys, csv
 
 
 companiesList = []
@@ -49,13 +49,15 @@ def exportFiles():
   
 """Download files from URL"""
 # TODO: does not download      
-def downloadFiles():
-    csv_url = 'https://old.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQ&render=download'
-    req = requests. get(csv_url)
-    url_content = req.content
-    csv_file = open('NASDAQ.csv', 'wb')
-    csv_file. write(url_content)
-    csv_file. close()
+# =============================================================================
+# def downloadFiles():
+#     csv_url = 'https://old.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQ&render=download'
+#     req = requests. get(csv_url)
+#     url_content = req.content
+#     csv_file = open('NASDAQ.csv', 'wb')
+#     csv_file. write(url_content)
+#     csv_file. close()
+# =============================================================================
 
 """Ask user to enter company stock symbol to display associated info"""
 def searchBySymbolinput():
